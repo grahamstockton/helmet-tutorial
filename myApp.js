@@ -19,6 +19,10 @@ app.use(helmet.noSniff());
 // prevent IE from opening untrusted html
 app.use(helmet.ieNoOpen());
 
+// configure helmet to use HTTPS for the next 90 days
+const ninetyDaysInSeconds = 90*24*60*60;
+app.use(helmet.hsts({maxAge: ninetyDaysInSeconds, force: true}));
+
 
 
 
