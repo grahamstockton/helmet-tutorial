@@ -16,6 +16,9 @@ app.use(helmet.xssFilter());
 // avoid MIME inferring
 app.use(helmet.noSniff());
 
+// prevent IE from opening untrusted html
+app.use(helmet.ieNoOpen());
+
 
 
 
