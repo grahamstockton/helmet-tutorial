@@ -13,6 +13,9 @@ app.use(helmet.frameguard({action: "DENY"}));
 // xss protection
 app.use(helmet.xssFilter());
 
+// avoid MIME inferring
+app.use(helmet.noSniff());
+
 
 
 
