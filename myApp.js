@@ -29,6 +29,17 @@ app.use(helmet.dnsPrefetchControl());
 // prevent client side caching
 app.use(helmet.noCache());
 
+// content security policy
+app.use(helmet.contentSecurityPolicy(
+  {
+    directives:
+      {
+        defaultSrc: ["'self'"], 
+        scriptSrc: ["'self'", "trusted-cdn.com"] 
+      }
+  }
+));
+
 
 
 
