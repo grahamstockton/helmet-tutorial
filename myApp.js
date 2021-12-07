@@ -4,6 +4,7 @@ const app = express();
 // helmet requirement
 const helmet = require('helmet');
 
+/*
 // hide express
 app.use(helmet.hidePoweredBy());
 
@@ -39,7 +40,29 @@ app.use(helmet.contentSecurityPolicy(
       }
   }
 ));
+*/
 
+const ninetyDaysInSeconds = 90*24*60*60;
+
+app.use(helmet({
+  hidePoweredBy: true,
+  frameguard: {
+    action: 'deny'
+  },
+  xssFilter: true,
+  noSniff: true,
+  ieNoOpen: true,
+  hsts: {maxAge: ninetyDaysInSeconds, force: true},
+  dnsPrefetchControl: true,
+  noCache: true,
+  contentSecurityPolicy: {
+    directives:
+      {
+        defaultSrc: ["'self'"], 
+        scriptSrc: ["'self'", "trusted-cdn.com"] 
+      }
+  }
+}));
 
 
 
