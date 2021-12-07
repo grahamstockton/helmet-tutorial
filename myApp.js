@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 // helmet requirement
-const helmet = require('helmet')
+const helmet = require('helmet');
 
 // hide express
 app.use(helmet.hidePoweredBy());
@@ -10,6 +10,8 @@ app.use(helmet.hidePoweredBy());
 // frameguard
 app.use(helmet.frameguard({action: "DENY"}));
 
+// xss protection
+app.use(helmet.xssFilter());
 
 
 
