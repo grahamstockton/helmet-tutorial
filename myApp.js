@@ -4,7 +4,8 @@ const app = express();
 // helmet requirement
 const helmet = require('helmet')
 
-
+// hide express
+helmet.hidePoweredBy();
 
 
 
